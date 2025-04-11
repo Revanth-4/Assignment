@@ -17,4 +17,9 @@ public interface RoleRepository {
 	@Query("SELECT r FROM Role r JOIN r.users u WHERE u.id = :userId")
 	List<Role> findRolesByUserId(@Param("userId") Long userId);
 
+    Role save(Role role);
+
+	List<Role> findAll();
+
+	Optional<Role> findById(Long id);
 }

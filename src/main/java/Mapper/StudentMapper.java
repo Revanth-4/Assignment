@@ -1,6 +1,7 @@
 package Mapper;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import DTO.AddressDTO;
@@ -69,15 +70,16 @@ public class StudentMapper {
         List<Course> courses = dto.getCourses().stream()
             .map(CourseMapper::dtoToCourse)
             .collect(Collectors.toList());
-        student.setCourses(courses);
+        student.setCourses((Set<Course>) courses);
 
         return student;
     }
 
     public static List<StudentDTO> studentListToDTOList(List<Student> students) {
-        return students.stream()
+        List<StudentDTO> collect = students.stream()
                 .map(StudentMapper::studentToDTO)
                 .collect(Collectors.toList());
+        return collect;
     }
 
     public static List<Student> dtoListToStudentList(List<StudentDTO> dtos) {

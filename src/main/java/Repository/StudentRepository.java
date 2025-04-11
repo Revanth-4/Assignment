@@ -1,6 +1,7 @@
 package Repository;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,4 +34,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     // ✅ 5. Get student by student code
     @Query("SELECT s FROM Student s WHERE s.studentCode = :studentCode")
     Optional<Student> getStudentByStudentCode(@Param("studentCode") String studentCode);
+
 }

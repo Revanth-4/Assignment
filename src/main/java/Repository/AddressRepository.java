@@ -1,5 +1,6 @@
 package Repository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,4 +26,13 @@ public interface AddressRepository {
     Optional<Address> findByStudentIdAndAddressId(@Param("studentId") Long studentId, @Param("addressId") Long addressId);
 
     Address save(Address address);
+
+    @Query("SELECT a FROM Address a")
+    List<Address> findAll();
+
+    @Query("SELECT COUNT(a) > 0 FROM Address a WHERE a.id = :id")
+    boolean existsById(Long id);
+
+    @Query("DELETE FROM Address a WHERE a.id = :id")
+    void deleteById(Long id);
 }
